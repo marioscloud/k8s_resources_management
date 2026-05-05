@@ -51,7 +51,9 @@ Because the request exceeded the physical capacity of the cluster nodes, the Pod
 Diagnostic Command:
 
 kubectl get events --field-selector type=Warning
-Result: Warning FailedScheduling ... 0/3 nodes are available: Insufficient cpu.
+
+Result: Warning FailedScheduling 
+0/3 nodes are available: Insufficient cpu.
 
 *3. Resource Optimization & Redeployment*
 The CPU request was optimized to 1.2 CPUs (1200m) to fit within the cluster’s existing resource quotas.
@@ -66,14 +68,14 @@ resources:
 *4. Verification*
 After applying the optimized manifest, the scheduler successfully allocated the Pod to a node.
 
-Bash
+
 kubectl get pods
 Result: hello-limit-7c7998ff6b-ctsjp  1/1  Running  0  6s
 
 *🧹 Cleanup*
 To maintain cluster hygiene, all resources were removed after verification:
 
-Bash
+
 kubectl delete -f hello-limit.yaml
 rm hello-limit.yaml
 
