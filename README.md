@@ -34,7 +34,6 @@ In a multi-tenant Kubernetes or OpenShift environment, an application without re
 *1. Initial Deployment with High Demands*
 Initially, a deployment was created requesting 8 CPUs.
 
-Bash
 kubectl create deployment hello-limit \
 --image quay.io/redhattraining/hello-world-nginx:v1.0 \
 --dry-run=client -o yaml > hello-limit.yaml
@@ -51,7 +50,6 @@ Because the request exceeded the physical capacity of the cluster nodes, the Pod
 
 Diagnostic Command:
 
-Bash
 kubectl get events --field-selector type=Warning
 Result: Warning FailedScheduling ... 0/3 nodes are available: Insufficient cpu.
 
